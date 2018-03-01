@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Appointment System</string>
+
+    <string name="appointment_system">Appointment\nSystem</string>
+    <string name="sign_in">Sign In</string>
+    <string name="text_view_divider">|</string>
+    <string name="log_in">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="teacher">Teacher</string>
+    <string name="user_name">User Name</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">Open Navigation Drawer</string>
+    <string name="drawer_close">Close Navigation Drawer</string>
+    <string name="action_save">Save</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="add">ADD</string>
+    <string name="counselling_hour">Counselling Hour</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="department">Department</string>
+    <string name="edit_info">Edit Info</string>
+    <string name="id">Id</string>
+    <string name="batch">Batch</string>
+    <string name="phone_number">Phone Number</string>
+</resources>

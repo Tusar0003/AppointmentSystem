@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.no0ne.appointmentsystem.SignInActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@string/sign_in" />
+
+        <EditText
+            android:id="@+id/edit_text_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/user_icon"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:inputType="text"
+            android:hint="@string/user_name" />
+
+        <EditText
+            android:id="@+id/edit_text_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/email_icon"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email" />
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/password_icon"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+
+        <!--<EditText-->
+            <!--android:id="@+id/edit_text_dept"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:drawableLeft="@drawable/password_icon"-->
+            <!--android:drawablePadding="4dp"-->
+            <!--android:backgroundTint="@android:color/black"-->
+            <!--android:textColorHint="@android:color/black"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:hint="@string/department" />-->
+
+        <EditText
+            android:id="@+id/edit_text_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/password_icon"
+            android:drawablePadding="4dp"
+            android:backgroundTint="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:inputType="phone"
+            android:visibility="gone"
+            android:hint="@string/phone_number" />
+
+        <CheckBox
+            android:id="@+id/check_box_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="@string/teacher" />
+
+        <Button
+            android:id="@+id/button_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:text="@string/sign_in" />
+    </LinearLayout>
+</ScrollView>
