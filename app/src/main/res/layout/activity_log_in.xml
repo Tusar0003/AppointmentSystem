@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context="com.example.no0ne.appointmentsystem.LogInActivity">
+    tools:context="com.example.no0ne.appointmentsystem.ui.LogInActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:textSize="50sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:text="@string/log_in" />
+        android:text="@string/sign_in" />
 
     <EditText
         android:id="@+id/edit_text_email"
@@ -50,6 +50,6 @@
         android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        android:text="@string/log_in" />
+        android:text="@string/sign_in" />
 
 </LinearLayout>

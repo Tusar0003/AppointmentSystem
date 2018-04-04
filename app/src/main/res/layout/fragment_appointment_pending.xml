@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.no0ne.appointmentsystem.fragment.AppointmentAcceptedFragment">
+    tools:context="com.example.no0ne.appointmentsystem.fragment.AppointmentPendingFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="Empty!" />
 
         <ListView
-            android:id="@+id/list_view_accepted_appointment"
+            android:id="@+id/list_view_pending_appointment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </ListView>

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,31 +19,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogInActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.LogInActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignInActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.SignInActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TeacherActivity"
+            android:name=".ui.TeacherActivity"
             android:label="Teacher"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".StudentActivity"
+            android:name=".ui.StudentActivity"
             android:label="Student"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TeacherInfoActivity"
+            android:name=".ui.TeacherInfoActivity"
             android:label="Edit Info"
-            android:parentActivityName=".TeacherActivity"
+            android:parentActivityName=".ui.TeacherActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".StudentInfo"
+            android:name=".ui.StudentInfoActivity"
             android:label="Edit Info"
-            android:parentActivityName=".StudentActivity"
-            android:screenOrientation="portrait"></activity>
+            android:parentActivityName=".ui.StudentActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.ChatActivity" />
+        <activity android:name=".ui.ScheduleActivity"></activity>
     </application>
 
 </manifest>

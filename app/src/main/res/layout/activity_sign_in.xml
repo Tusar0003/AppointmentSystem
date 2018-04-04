@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.no0ne.appointmentsystem.SignInActivity">
+    tools:context="com.example.no0ne.appointmentsystem.ui.SignInActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:textSize="50sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:text="@string/sign_in" />
+            android:text="@string/sign_up" />
 
         <EditText
             android:id="@+id/edit_text_user_name"
@@ -99,6 +99,6 @@
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:text="@string/sign_in" />
+            android:text="@string/sign_up" />
     </LinearLayout>
 </ScrollView>

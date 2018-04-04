@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:background="#0277BD"
-    tools:context="com.example.no0ne.appointmentsystem.MainActivity">
+    tools:context="com.example.no0ne.appointmentsystem.ui.MainActivity">
 
     <ImageView
         android:id="@+id/icon"
@@ -43,7 +43,7 @@
             android:textAlignment="textEnd"
             android:textSize="20sp"
             android:textColor="@android:color/white"
-            android:text="@string/sign_in" />
+            android:text="@string/sign_up" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:textAlignment="textStart"
             android:textSize="20sp"
             android:textColor="@android:color/white"
-            android:text="@string/log_in" />
+            android:text="@string/sign_in" />
     </LinearLayout>
 
 </LinearLayout>

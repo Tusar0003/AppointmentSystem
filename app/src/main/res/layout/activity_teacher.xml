@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.no0ne.appointmentsystem.TeacherActivity">
+    tools:context="com.example.no0ne.appointmentsystem.ui.TeacherActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -79,6 +79,7 @@
                     android:text="User Name" />
 
                 <TextView
+                    android:id="@+id/text_view_department"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
