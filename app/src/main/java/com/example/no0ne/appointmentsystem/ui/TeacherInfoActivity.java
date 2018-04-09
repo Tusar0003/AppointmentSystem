@@ -67,6 +67,7 @@ public class TeacherInfoActivity extends AppCompatActivity {
     private List<String> mDayList;
     private List<String> mFromList;
     private List<String> mToList;
+    private List<String> mStatusList;
 
     private Dialog mDialog;
 
@@ -297,7 +298,7 @@ public class TeacherInfoActivity extends AppCompatActivity {
 //        Log.e("SHOW_SCHEDULE_CALLED", "showSchedule() is called");
 
         setSchedule();
-        setAdapter(mDayList, mFromList, mToList);
+        setAdapter(mDayList, mFromList, mToList, mStatusList);
     }
 
     private void setSchedule() {
@@ -309,6 +310,7 @@ public class TeacherInfoActivity extends AppCompatActivity {
         mDayList = new ArrayList<>();
         mFromList = new ArrayList<>();
         mToList = new ArrayList<>();
+        mStatusList = new ArrayList<>();
 
         mUserReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -318,6 +320,7 @@ public class TeacherInfoActivity extends AppCompatActivity {
                         mDayList.add(childSnapshot.getKey().toString());
                         mFromList.add(childSnapshot.child("from").getValue().toString());
                         mToList.add(childSnapshot.child("to").getValue().toString());
+                        mStatusList.add(childSnapshot.child("slot_status").getValue().toString());
                     } catch (Exception e) {
 
                     }
@@ -331,13 +334,13 @@ public class TeacherInfoActivity extends AppCompatActivity {
         });
     }
 
-    private void setAdapter(List<String> dayList, List<String> fromList, List<String> toList) {
+    private void setAdapter(List<String> dayList, List<String> fromList, List<String> toList, List<String> statusList) {
         mDialog = new Dialog(TeacherInfoActivity.this);
         mDialog.setContentView(R.layout.dialog_schedule);
         mDialog.setTitle("Schedule");
         mDialog.show();
 
-        ScheduleAdapter adapter = new ScheduleAdapter(TeacherInfoActivity.this, dayList, fromList, toList);
+        ScheduleAdapter adapter = new ScheduleAdapter(TeacherInfoActivity.this, dayList, fromList, toList, statusList);
         ListView scheduleListView = mDialog.findViewById(R.id.list_view_schedule);
         scheduleListView.setAdapter(adapter);
 

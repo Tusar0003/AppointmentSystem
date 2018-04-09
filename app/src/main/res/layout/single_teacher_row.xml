@@ -36,10 +36,10 @@
             android:text="@string/department" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/circle_image_view"
-        android:background="@android:color/black" />
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_below="@+id/circle_image_view"-->
+        <!--android:background="@android:color/black" />-->
 
 </RelativeLayout>

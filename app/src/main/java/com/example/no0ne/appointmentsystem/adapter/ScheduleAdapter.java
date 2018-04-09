@@ -20,15 +20,25 @@ import java.util.List;
 public class ScheduleAdapter extends ArrayAdapter<String> {
 
     private Activity mContext;
-    private List<String> mDayList, mFromList, mToList;
+    private List<String> mDayList, mFromList, mToList, mStatusList;
 
-    public ScheduleAdapter(Activity context, List<String> dayList, List<String> fromList, List<String> toList) {
+//    public ScheduleAdapter(Activity context, List<String> dayList, List<String> fromList, List<String> toList) {
+//        super(context, R.layout.single_schedule_view, dayList);
+//
+//        this.mContext = context;
+//        this.mDayList = dayList;
+//        this.mFromList = fromList;
+//        this.mToList = toList;
+//    }
+
+    public ScheduleAdapter(Activity context, List<String> dayList, List<String> fromList, List<String> toList, List<String> statusList) {
         super(context, R.layout.single_schedule_view, dayList);
 
         this.mContext = context;
         this.mDayList = dayList;
         this.mFromList = fromList;
         this.mToList = toList;
+        this.mStatusList = statusList;
     }
 
     @NonNull
@@ -40,10 +50,12 @@ public class ScheduleAdapter extends ArrayAdapter<String> {
         TextView dayTextView = view.findViewById(R.id.text_view_day);
         TextView fromTextView = view.findViewById(R.id.text_view_from);
         TextView toTextView = view.findViewById(R.id.text_view_to);
+        TextView statusTextView = view.findViewById(R.id.text_view_status);
 
         dayTextView.setText(mDayList.get(position));
         fromTextView.setText(mFromList.get(position));
         toTextView.setText(mToList.get(position));
+        statusTextView.setText(mStatusList.get(position));
 
         return view;
     }

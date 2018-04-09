@@ -144,21 +144,26 @@ public class PendingFragment extends Fragment {
         mPendingAppointmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int position, long l) {
-                Log.e("KEY", String.valueOf(adapterView.getItemAtPosition(position)));
+//                Log.e("KEY", String.valueOf(adapterView.getItemAtPosition(position)));
 
-                CharSequence[] options = new CharSequence[]{"Accept", "Decline"};
+                CharSequence[] options = new CharSequence[]{"View Topic", "Accept", "Decline"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Select Options");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        refresh();
+//                        refresh();
                         switch (i) {
                             case 0:
-                                accept(adapterView.getItemAtPosition(position).toString());
+                                viewTopic(adapterView.getItemAtPosition(position).toString());
                                 break;
                             case 1:
+                                refresh();
+                                accept(adapterView.getItemAtPosition(position).toString());
+                                break;
+                            case 2:
+                                refresh();
                                 decline(adapterView.getItemAtPosition(position).toString());
                                 break;
                             default:
@@ -168,6 +173,28 @@ public class PendingFragment extends Fragment {
                 });
 
                 builder.show();
+            }
+        });
+    }
+
+    private void viewTopic(String studentId) {
+        mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
+                .child(mCurrentUserId).child(studentId);
+
+        mUserReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String topic = dataSnapshot.child("topic").getValue().toString();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Topic");
+                builder.setMessage(topic);
+                builder.show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

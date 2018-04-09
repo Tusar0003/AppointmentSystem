@@ -1,12 +1,14 @@
 package com.example.no0ne.appointmentsystem.ui;
 
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ import java.util.List;
 public class ScheduleActivity extends AppCompatActivity {
 
     private String mTeacherId;
+    private String mTopic;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mUserReference;
@@ -39,6 +42,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private List<String> mDayList;
     private List<String> mFromList;
     private List<String> mToList;
+    private List<String> mStatusList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,7 @@ public class ScheduleActivity extends AppCompatActivity {
         mDayList = new ArrayList<>();
         mFromList = new ArrayList<>();
         mToList = new ArrayList<>();
+        mStatusList = new ArrayList<>();
 
         mUserReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -94,6 +99,7 @@ public class ScheduleActivity extends AppCompatActivity {
                         mDayList.add(childSnapShot.getKey().toString());
                         mFromList.add(childSnapShot.child("from").getValue().toString());
                         mToList.add(childSnapShot.child("to").getValue().toString());
+                        mStatusList.add(childSnapShot.child("slot_status").getValue().toString());
                     }
                 } catch (Exception e) {
 
@@ -110,7 +116,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        ScheduleAdapter adapter = new ScheduleAdapter(this, mDayList, mFromList, mToList);
+        ScheduleAdapter adapter = new ScheduleAdapter(this, mDayList, mFromList, mToList, mStatusList);
         ListView scheduleListView = findViewById(R.id.list_view_schedule_activity);
         scheduleListView.setAdapter(adapter);
 
@@ -145,62 +151,87 @@ public class ScheduleActivity extends AppCompatActivity {
         });
     }
 
+//    private void getAppointment(final String day) {
+//        CharSequence[] options = new CharSequence[]{"Get Appointment"};
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleActivity.this);
+//        builder.setItems(options, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                recreate();
+//
+//                switch (i) {
+//                    case 0:
+//
+//                        break;
+//                    default:
+//                        return;
+//                }
+//            }
+//        });
+//
+//        builder.show();
+//    }
+
     private void getAppointment(final String day) {
-        CharSequence[] options = new CharSequence[]{"Get Appointment"};
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_appointment_topic);
+        dialog.setTitle("Appointment Topic");
+        dialog.show();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(ScheduleActivity.this);
-        builder.setItems(options, new DialogInterface.OnClickListener() {
+        final EditText topicEditText = dialog.findViewById(R.id.edit_text_topic);
+        Button submitButton = dialog.findViewById(R.id.button_submit);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                recreate();
+            public void onClick(View view) {
+                if (!TextUtils.isEmpty(topicEditText.getText().toString())) {
+                    dialog.dismiss();
 
-                switch (i) {
-                    case 0:
-                        final String currentUserId = mAuth.getCurrentUser().getUid();
+                    mTopic = topicEditText.getText().toString();
 
-                        mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
-                                .child(mTeacherId).child(currentUserId);
+                    final String currentUserId = mAuth.getCurrentUser().getUid();
 
-                        HashMap<String, String> hashMap = new HashMap<>();
-                        hashMap.put("day", day);
-                        hashMap.put("response", "pending");
+                    mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
+                            .child(mTeacherId).child(currentUserId);
 
-                        mUserReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
-                                            .child(currentUserId).child(mTeacherId);
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("day", day);
+                    hashMap.put("response", "pending");
+                    hashMap.put("topic", mTopic);
 
-                                    HashMap<String, String> hashMap = new HashMap<>();
-                                    hashMap.put("day", day);
-                                    hashMap.put("response", "pending");
+                    mUserReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
+                                        .child(currentUserId).child(mTeacherId);
 
-                                    mUserReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(ScheduleActivity.this, "Appointment request sent.",
-                                                        Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(ScheduleActivity.this, "Something went wrong!",
-                                                        Toast.LENGTH_SHORT).show();
-                                            }
+                                HashMap<String, String> hashMap = new HashMap<>();
+                                hashMap.put("day", day);
+                                hashMap.put("response", "pending");
+                                hashMap.put("topic", mTopic);
+
+                                mUserReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(ScheduleActivity.this, "Appointment request sent.",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(ScheduleActivity.this, "Something went wrong!",
+                                                    Toast.LENGTH_SHORT).show();
                                         }
-                                    });
-                                } else {
-                                    Toast.makeText(ScheduleActivity.this, "Something went wrong!",
-                                            Toast.LENGTH_SHORT).show();
-                                }
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(ScheduleActivity.this, "Something went wrong!",
+                                        Toast.LENGTH_SHORT).show();
                             }
-                        });
-                        break;
-                    default:
-                        return;
+                        }
+                    });
                 }
             }
         });
-
-        builder.show();
     }
 }

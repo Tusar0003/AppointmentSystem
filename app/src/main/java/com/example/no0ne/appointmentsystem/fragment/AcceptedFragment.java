@@ -143,15 +143,19 @@ public class AcceptedFragment extends Fragment {
         mAppointmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int position, long l) {
-                CharSequence[] options = new CharSequence[]{"Delete"};
+                CharSequence[] options = new CharSequence[]{"View Topic", "Delete"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        refresh();
+//                        refresh();
                         switch (i) {
                             case 0:
+                                viewTopic(adapterView.getItemAtPosition(position).toString());
+                                break;
+                            case 1:
+                                refresh();
                                 delete(adapterView.getItemAtPosition(position).toString());
                                 break;
                             default:
@@ -161,6 +165,28 @@ public class AcceptedFragment extends Fragment {
                 });
 
                 builder.show();
+            }
+        });
+    }
+
+    private void viewTopic(String studentId) {
+        mUserReference = FirebaseDatabase.getInstance().getReference().child("Appointment")
+                .child(mCurrentUserId).child(studentId);
+
+        mUserReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String topic = dataSnapshot.child("topic").getValue().toString();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Topic");
+                builder.setMessage(topic);
+                builder.show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

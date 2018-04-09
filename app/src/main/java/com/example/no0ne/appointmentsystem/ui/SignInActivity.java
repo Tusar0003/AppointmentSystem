@@ -268,7 +268,7 @@ public class SignInActivity extends AppCompatActivity {
                     mUserReference.setValue(teacherMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-//                                                    Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
+//                          Toast.makeText(SignInActivity.this, "Sign in successful!", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(SignInActivity.this, TeacherActivity.class);
                             startActivity(intent);
