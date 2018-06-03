@@ -18,6 +18,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
-        android:text="SUBMIT" />
+        android:text="GET APPOINTMENT" />
 
 </LinearLayout>
