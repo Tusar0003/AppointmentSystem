@@ -89,7 +89,7 @@ public class LogInActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser currentUser) {
         if (currentUser == null) {
             Toast.makeText(LogInActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-            finish();
+            return;
         }
 
         String userId = currentUser.getUid();
