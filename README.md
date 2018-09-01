@@ -1,6 +1,8 @@
 # AppointmentSystem
 Appointment System is an application where one person can register as a teacher or student. Then teacher can set his free schedule for their students and students will be able see those schedule and check whether the schedule is available or not then can take an appointment if the schedule is already not booked.
 
+<img src="images/welcome.png" width="300" />
+
 ## Sign Up
 Students can sign up using email and password only.
 
