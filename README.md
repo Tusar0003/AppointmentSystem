@@ -8,8 +8,9 @@ Students can sign up using email and password only.
 
 <img src="images/signin.png" width="300" />
 
-Teachers have to provide their mobile number with their email and password. Then a verification code will be sent to him/her. Finally he/she has provide that verification code for completing the sign up process.
+Teachers have to provide their mobile number with their email and password. Then a verification code will be sent to him/her. Finally he/she has to provide that verification code for completing the sign up process.
 
+## Welcome Screen
 <img src="images/signup2.png" width="300" />
 
 ## Teacher Home Page
@@ -39,4 +40,9 @@ Students have to select teacher to view their schedule.
 
 Then they can take appointment by selecting the free schedule and providing an appointment topic.
 
-<img src="images/booking.png" width="290" /> <img src="images/booking1.png" width="290" />
+<img src="images/booking.png" width="300" /> <img src="images/booking1.png" width="300" />
+
+## Logout
+They can log out whenever they out by clicking the log out from menu.
+
+<img src="images/logout_t.png" width="300" />
